@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bohd4n.dev/sitemap.xml

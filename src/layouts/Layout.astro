@@ -1,0 +1,130 @@
+---
+/** biome-ignore-all lint/correctness/noUnusedImports: React icons are used in JSX */
+/** biome-ignore-all lint/correctness/noUnusedVariables: variables used in Astro components */
+
+import Footer from "@astro/sections/Footer.astro";
+import { siteConfig } from "@config/site";
+import BackToTop from "@react/ui/BackToTop";
+import type { LayoutProps } from "@/types/ui";
+
+interface Props extends LayoutProps {}
+
+const { title, description } = Astro.props;
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+const ogImageURL = new URL(siteConfig.logo, Astro.url).href;
+const appleTouchIconURL = Astro.site ? new URL(siteConfig.logo, Astro.site).href : siteConfig.logo;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="keywords" content={siteConfig.keywords.join(", ")} />
+    
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    {description && <meta property="og:description" content={description} />}
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    
+    <link rel="icon" type="image/png" sizes="32x32" href={siteConfig.logo} />
+    <link rel="icon" type="image/png" sizes="16x16" href={siteConfig.logo} />
+    <link rel="icon" sizes="192x192" href={siteConfig.logo} />
+    <link rel="icon" sizes="512x512" href={siteConfig.logo} />
+    <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconURL} />
+    
+    <script is:inline>
+      // if ('scrollRestoration' in history) {
+      //   history.scrollRestoration = 'manual';
+      // }
+
+      // window.addEventListener('beforeunload', () => {
+      //   window.scrollTo(0, 0);
+      // });
+
+      // window.scrollTo(0, 0);
+      
+      const theme = localStorage.getItem('theme') || 'system';
+      document.documentElement.classList.remove('light', 'dark');
+      
+      if (theme === 'system') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.add(prefersDark ? 'dark' : 'light');
+      } else {
+        document.documentElement.classList.add(theme);
+      }
+      
+      !localStorage.getItem('theme') && localStorage.setItem('theme', 'system');
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900 dark:bg-black dark:text-white">
+    <div class="mx-auto min-h-screen max-w-[800px]">
+      <main><slot /></main>
+      <Footer />
+    </div>
+    <BackToTop client:load />
+  </body>
+</html>
+
+
+<style is:global>
+  html.theme-switching *,
+  html.theme-switching {
+    transition: none !important;
+  }
+  
+  html.light { color-scheme: light; }
+  html.dark { color-scheme: dark; }
+
+  .screenshots-container {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(156 163 175 / 0.75) rgb(229 231 235 / 0.6);
+  }
+  
+  .dark .screenshots-container {
+    scrollbar-color: rgb(255 255 255 / 0.3) rgb(255 255 255 / 0.05);
+  }
+  
+  .screenshots-container::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .screenshots-container::-webkit-scrollbar-track {
+    background: rgb(229 231 235 / 0.6);
+    border-radius: 3px;
+    margin: 0 12px;
+  }
+  
+  .dark .screenshots-container::-webkit-scrollbar-track {
+    background: rgb(255 255 255 / 0.05);
+  }
+  
+  .screenshots-container::-webkit-scrollbar-thumb {
+    background-color: rgb(156 163 175 / 0.75);
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dark .screenshots-container::-webkit-scrollbar-thumb {
+    background-color: rgb(255 255 255 / 0.3);
+  }
+  
+  .screenshots-container:hover::-webkit-scrollbar-thumb {
+    background-color: rgb(107 114 128 / 0.9);
+  }
+  
+  .dark .screenshots-container:hover::-webkit-scrollbar-thumb {
+    background-color: rgb(255 255 255 / 0.45);
+  }
+</style>

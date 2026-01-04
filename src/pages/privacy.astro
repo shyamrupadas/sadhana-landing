@@ -1,0 +1,52 @@
+---
+/** biome-ignore-all lint/correctness/noUnusedImports: React icons are used in JSX */
+/** biome-ignore-all lint/correctness/noUnusedVariables: variables used in Astro components */
+
+import Breadcrumbs from "@astro/ui/Breadcrumbs.astro";
+import { siteConfig } from "@config/site";
+import Layout from "@layouts/Layout.astro";
+import { marked } from "marked";
+
+const privacyContent = Object.values(import.meta.glob("./content/privacy.md", { eager: true }))[0] as { rawContent: () => string };
+const htmlContent = marked(privacyContent.rawContent());
+---
+
+<Layout 
+  title={`${siteConfig.name} • Privacy Policy`} 
+  description={`Privacy Policy for ${siteConfig.name} application - How we handle and protect your data`}
+>
+  <main class="min-h-screen max-w-3xl mx-auto px-4 py-4">
+    <Breadcrumbs items={[{ label: "Privacy Policy" }]} />
+    <div class="prose prose-gray dark:prose-invert prose-sm sm:prose-base max-w-none">
+      <div set:html={htmlContent} />
+    </div>
+  </main>
+</Layout>
+
+<style is:global>
+  .prose {
+    --tw-prose-headings: theme(colors.gray.900);
+    --tw-prose-links: theme(colors.blue.600);
+    --tw-prose-bold: theme(colors.gray.900);
+    --tw-prose-invert-headings: theme(colors.white);
+    --tw-prose-invert-links: theme(colors.blue.400);
+    --tw-prose-invert-bold: theme(colors.white);
+  }
+  
+  .prose {
+    a {
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+
+    h1, h2, h3, h4, h5, h6 { color: theme(colors.gray.900); }
+    p, li { color: theme(colors.gray.700); }
+    strong { color: theme(colors.gray.800); }
+  }
+
+  .dark .prose {
+    h1, h2, h3, h4, h5, h6 { color: theme(colors.white); }
+    p, li { color: theme(colors.gray.300); }
+    strong { color: theme(colors.gray.200); }
+  }
+</style>
