@@ -3,18 +3,18 @@ import type { Feature } from "@/types/app";
 
 export const features: Feature[] = [
 	{
-		title: "Main Feature",
-		description: "Describe your main feature here. What makes it special?",
+		title: "Ручной трекинг сна",
+		description: "Ты отмечаешь отбой, подъём и дневной сон. Осознанно, без автоматических датчиков и «магии».",
 		icon: FiStar,
 	},
 	{
-		title: "Another Feature",
-		description: "What else can your app do? Tell users about it here.",
+		title: "Всё на одном экране",
+		description: "Данные и статистика — в табличном виде. Как в Excel, только удобнее и всегда под рукой",
 		icon: FiZap,
 	},
 	{
-		title: "One More Feature",
-		description: "Add another key feature of your application here.",
+		title: "Без давления",
+		description: "Без оценок. Ты просто наблюдаешь — и со временем режим начинает улучшаться.",
 		icon: FiBox,
 	},
 ];
