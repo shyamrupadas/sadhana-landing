@@ -6,7 +6,7 @@ export const siteConfig = {
 	keywords: ["mobile app", "landing page"],
 	logo: "/assets/favicon.png",
 	storeLinks: {
-		apple: "#",
+		apple: "https://sadhana-tracker.netlify.app",
 		google: "#",
 	},
 	socialLinks,

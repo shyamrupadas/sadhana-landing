@@ -2,9 +2,9 @@ import type { Screenshots } from "@/types/app";
 
 export const screenshots: Screenshots = {
 	iphone: [
-		"/assets/screenshots/iphone/1.png",
-		"/assets/screenshots/iphone/2.png",
-		"/assets/screenshots/iphone/3.png",
+		"/assets/screenshots/iphone/1.jpg",
+		"/assets/screenshots/iphone/2.jpg",
+		// "/assets/screenshots/iphone/3.jpg",
 	],
 	ipad: [
 		"/assets/screenshots/ipad/1.png",
