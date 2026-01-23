@@ -4,7 +4,7 @@ export const screenshots: Screenshots = {
 	iphone: [
 		"/assets/screenshots/iphone/1.jpg",
 		"/assets/screenshots/iphone/2.jpg",
-		// "/assets/screenshots/iphone/3.jpg",
+		"/assets/screenshots/iphone/3.jpg",
 	],
 	ipad: [
 		"/assets/screenshots/ipad/1.png",
