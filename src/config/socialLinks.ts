@@ -1,7 +1,5 @@
 import {
-	RiInstagramFill,
 	RiTelegram2Fill,
-	RiTwitterXFill,
 } from "react-icons/ri";
 import type { SocialLink } from "@/types/app";
 

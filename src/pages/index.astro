@@ -14,6 +14,7 @@ import Layout from "@layouts/Layout.astro";
 import Lightbox from "@react/interactive/Lightbox";
 import Reviews from "@react/interactive/Reviews";
 import Screenshots from "@react/interactive/Screenshots";
+import { FaArrowRight } from "react-icons/fa";
 
 const { name: title, description, storeLinks, logo } = siteConfig;
 ---
@@ -25,6 +26,28 @@ const { name: title, description, storeLinks, logo } = siteConfig;
     <Features items={features} />
     <!-- <Reviews items={reviews} client:visible /> -->
     <FAQ items={faqs} />
+    <div class="mt-12 border-t border-gray-200/80 dark:border-white/10 pt-8">
+      <div class="rounded-2xl bg-gray-50 dark:bg-white/[0.03] px-4 pt-5 pb-0 sm:px-6 sm:pt-6 sm:pb-0">
+        <p class="mb-4 text-base font-semibold text-gray-900 dark:text-white text-left">
+          Начните отслеживать и увидите результат
+        </p>
+        <div class="flex justify-center md:justify-start">
+          <a
+            href={storeLinks.apple}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center justify-center gap-3 rounded-xl border border-[#4c74d4] dark:border-[#5a86f0] bg-[#4c74d4] dark:bg-[#5a86f0] px-5 py-3.5 hover:bg-[#4163b4] dark:hover:bg-[#6a94ff] shadow-md shadow-[#4c74d4]/25 dark:shadow-[#5a86f0]/25 flex-1 min-w-0 md:flex-initial"
+          >
+            <div class="flex items-center justify-center w-7 h-7 flex-shrink-0">
+              <FaArrowRight className="text-white group-hover:translate-x-0.5 w-5 h-5" />
+            </div>
+            <span class="text-base font-normal tracking-wide text-white">
+              Начать отслеживать
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
   </main>
 </Layout>
 
